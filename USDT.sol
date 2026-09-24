@@ -1,7 +1,12 @@
-/**
- *Submitted for verification at Etherscan.io on 2017-11-28
-*/
 
+/**
+ /**
+ * @title TetherToken (USDT)
+ * @author Triplecrown411
+ * @notice USDT smart contract with standardized parameter naming
+ * @dev Originally submitted for verification at Etherscan.io on 2017-11-28
+ * @dev Modified on 2026-09-23 to standardize BlackList function parameters
+*/
 pragma solidity ^0.4.17;
 
 /**
