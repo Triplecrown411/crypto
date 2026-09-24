@@ -278,25 +278,25 @@ contract BlackList is Ownable, BasicToken {
 
     mapping (address => bool) public isBlackListed;
     
-    function addBlackList (address _evilUser) public onlyOwner {
-        isBlackListed[_evilUser] = true;
-        AddedBlackList(_evilUser);
+    function addBlackList (address _user) public onlyOwner {
+        isBlackListed[_user] = true;
+        AddedBlackList(_user);
     }
 
-    function removeBlackList (address _clearedUser) public onlyOwner {
-        isBlackListed[_clearedUser] = false;
-        RemovedBlackList(_clearedUser);
+    function removeBlackList (address _user) public onlyOwner {
+        isBlackListed[_user] = false;
+        RemovedBlackList(_user);
     }
 
-    function destroyBlackFunds (address _blackListedUser) public onlyOwner {
-        require(isBlackListed[_blackListedUser]);
-        uint dirtyFunds = balanceOf(_blackListedUser);
-        balances[_blackListedUser] = 0;
+    function destroyBlackFunds (address _user) public onlyOwner {
+        require(isBlackListed[_user]);
+        uint dirtyFunds = balanceOf(_user);
+        balances[_user] = 0;
         _totalSupply -= dirtyFunds;
-        DestroyedBlackFunds(_blackListedUser, dirtyFunds);
+        DestroyedBlackFunds(_user, dirtyFunds);
     }
 
-    event DestroyedBlackFunds(address _blackListedUser, uint _balance);
+    event DestroyedBlackFunds(address _user, uint _balance);
 
     event AddedBlackList(address _user);
 
